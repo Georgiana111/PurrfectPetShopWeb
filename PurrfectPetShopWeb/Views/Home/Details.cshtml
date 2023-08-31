@@ -1,0 +1,38 @@
+﻿@model ShoppingCart
+
+<form method="post">
+    <input hidden asp-for="ProductId" />
+    <div class="container mt-4">
+        <div class="card shadow">
+            <div class="card-header bg-secondary text-light py-4">
+                <h3 class="text-center">@Model.Product.Name</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="@Model.Product.ImageUrl" alt="Product Image" class="img-fluid" />
+                    </div>
+                    <div class="col-md-8">
+                        <p class="mb-1">Category: @Model.Product.Category.Name</p>
+                        <p class="mb-1">Status: @Model.Product.Status</p>
+                        <p>@Model.Product.Description</p>
+                        <h5 class="card-title text-dark">
+                            Price: @Model.Product.ProductPrice.ToString("c")
+                        </h5>
+                        <div class="input-group mb-3">
+                            <input asp-for="Count" type="number" value="1" class="form-control text-center" min="1" style="max-width: 50px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <small>Back to Home</small>
+                </a>
+                <button type="submit" class="btn btn-primary text-uppercase">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
